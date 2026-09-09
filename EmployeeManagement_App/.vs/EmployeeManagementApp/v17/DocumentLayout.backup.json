@@ -1,0 +1,200 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BDAA0AB5-3528-4E23-9CB8-55F9D750C148}|EmployeeManagementApp.csproj|c:\\users\\kirthikakumar\\source\\repos\\employeemanagementapp\\services\\iemployeeeventpublisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDAA0AB5-3528-4E23-9CB8-55F9D750C148}|EmployeeManagementApp.csproj|solutionrelative:services\\iemployeeeventpublisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDAA0AB5-3528-4E23-9CB8-55F9D750C148}|EmployeeManagementApp.csproj|c:\\users\\kirthikakumar\\source\\repos\\employeemanagementapp\\services\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDAA0AB5-3528-4E23-9CB8-55F9D750C148}|EmployeeManagementApp.csproj|solutionrelative:services\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08FEE97D-ADBB-437C-AD5F-0EDAB7ED7379}|..\\EmployeeManagement.Contracts\\EmployeeManagement.Contracts.csproj|c:\\users\\kirthikakumar\\source\\repos\\employeemanagement.contracts\\events\\employeecreatedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DA568F9-714C-46C9-A3FA-71078CD99279}|..\\EmployeeManagementFunction\\EmployeeManagementFunction.csproj|c:\\users\\kirthikakumar\\source\\repos\\employeemanagementfunction\\employeecreatedfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDAA0AB5-3528-4E23-9CB8-55F9D750C148}|EmployeeManagementApp.csproj|c:\\users\\kirthikakumar\\source\\repos\\employeemanagementapp\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDAA0AB5-3528-4E23-9CB8-55F9D750C148}|EmployeeManagementApp.csproj|solutionrelative:services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDAA0AB5-3528-4E23-9CB8-55F9D750C148}|EmployeeManagementApp.csproj|c:\\users\\kirthikakumar\\source\\repos\\employeemanagementapp\\services\\azurequeueemployeeeventpublisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDAA0AB5-3528-4E23-9CB8-55F9D750C148}|EmployeeManagementApp.csproj|solutionrelative:services\\azurequeueemployeeeventpublisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DA568F9-714C-46C9-A3FA-71078CD99279}|..\\EmployeeManagementFunction\\EmployeeManagementFunction.csproj|c:\\users\\kirthikakumar\\source\\repos\\employeemanagementfunction\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DA568F9-714C-46C9-A3FA-71078CD99279}|..\\EmployeeManagementFunction\\EmployeeManagementFunction.csproj|c:\\users\\kirthikakumar\\source\\repos\\employeemanagementfunction\\local.settings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DA568F9-714C-46C9-A3FA-71078CD99279}|..\\EmployeeManagementFunction\\EmployeeManagementFunction.csproj|c:\\users\\kirthikakumar\\source\\repos\\employeemanagementfunction\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DA568F9-714C-46C9-A3FA-71078CD99279}|..\\EmployeeManagementFunction\\EmployeeManagementFunction.csproj|c:\\users\\kirthikakumar\\source\\repos\\employeemanagementfunction\\services\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DA568F9-714C-46C9-A3FA-71078CD99279}|..\\EmployeeManagementFunction\\EmployeeManagementFunction.csproj|c:\\users\\kirthikakumar\\source\\repos\\employeemanagementfunction\\host.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementApp\\Services\\EmployeeService.cs",
+              "RelativeDocumentMoniker": "Services\\EmployeeService.cs",
+              "ToolTip": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementApp\\Services\\EmployeeService.cs",
+              "RelativeToolTip": "Services\\EmployeeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-07T15:13:55.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IEmployeeEventPublisher.cs",
+              "DocumentMoniker": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementApp\\Services\\IEmployeeEventPublisher.cs",
+              "RelativeDocumentMoniker": "Services\\IEmployeeEventPublisher.cs",
+              "ToolTip": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementApp\\Services\\IEmployeeEventPublisher.cs",
+              "RelativeToolTip": "Services\\IEmployeeEventPublisher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-07T15:13:06.626Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IEmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementApp\\Services\\IEmployeeService.cs",
+              "RelativeDocumentMoniker": "Services\\IEmployeeService.cs",
+              "ToolTip": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementApp\\Services\\IEmployeeService.cs",
+              "RelativeToolTip": "Services\\IEmployeeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-07T15:12:58.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmployeeCreatedEvent.cs",
+              "DocumentMoniker": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagement.Contracts\\Events\\EmployeeCreatedEvent.cs",
+              "RelativeDocumentMoniker": "..\\EmployeeManagement.Contracts\\Events\\EmployeeCreatedEvent.cs",
+              "ToolTip": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagement.Contracts\\Events\\EmployeeCreatedEvent.cs",
+              "RelativeToolTip": "..\\EmployeeManagement.Contracts\\Events\\EmployeeCreatedEvent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-07T15:11:14.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementFunction\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "..\\EmployeeManagementFunction\\Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementFunction\\Services\\EmailService.cs",
+              "RelativeToolTip": "..\\EmployeeManagementFunction\\Services\\EmailService.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAuwFwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-07T14:56:28.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementFunction\\Services\\IEmailService.cs",
+              "RelativeDocumentMoniker": "..\\EmployeeManagementFunction\\Services\\IEmailService.cs",
+              "ToolTip": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementFunction\\Services\\IEmailService.cs",
+              "RelativeToolTip": "..\\EmployeeManagementFunction\\Services\\IEmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-07T14:55:31.388Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AzureQueueEmployeeEventPublisher.cs",
+              "DocumentMoniker": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementApp\\Services\\AzureQueueEmployeeEventPublisher.cs",
+              "RelativeDocumentMoniker": "Services\\AzureQueueEmployeeEventPublisher.cs",
+              "ToolTip": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementApp\\Services\\AzureQueueEmployeeEventPublisher.cs",
+              "RelativeToolTip": "Services\\AzureQueueEmployeeEventPublisher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-07T12:23:20.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EmployeeCreatedFunction.cs",
+              "DocumentMoniker": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementFunction\\EmployeeCreatedFunction.cs",
+              "RelativeDocumentMoniker": "..\\EmployeeManagementFunction\\EmployeeCreatedFunction.cs",
+              "ToolTip": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementFunction\\EmployeeCreatedFunction.cs",
+              "RelativeToolTip": "..\\EmployeeManagementFunction\\EmployeeCreatedFunction.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-07T12:11:12.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "local.settings.json",
+              "DocumentMoniker": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementFunction\\local.settings.json",
+              "RelativeDocumentMoniker": "..\\EmployeeManagementFunction\\local.settings.json",
+              "ToolTip": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementFunction\\local.settings.json",
+              "RelativeToolTip": "..\\EmployeeManagementFunction\\local.settings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-09-07T12:10:38.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementFunction\\Program.cs",
+              "RelativeDocumentMoniker": "..\\EmployeeManagementFunction\\Program.cs",
+              "ToolTip": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementFunction\\Program.cs",
+              "RelativeToolTip": "..\\EmployeeManagementFunction\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-07T12:09:28.091Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "host.json",
+              "DocumentMoniker": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementFunction\\host.json",
+              "RelativeDocumentMoniker": "..\\EmployeeManagementFunction\\host.json",
+              "ToolTip": "C:\\Users\\KirthikaKumar\\source\\repos\\EmployeeManagementFunction\\host.json",
+              "RelativeToolTip": "..\\EmployeeManagementFunction\\host.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-09-07T12:09:01.956Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
