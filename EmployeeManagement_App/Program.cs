@@ -36,6 +36,7 @@ builder.Services.AddControllers()
                 new ApiResponse<Dictionary<string, string[]>>(false, "Validation failed.", errors));
         };
     });
+
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
@@ -45,6 +46,16 @@ builder.Services.AddScoped<IJobTitleService, JobTitleService>();
 builder.Services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
 builder.Services.AddScoped<ILeaveRequestService, LeaveRequestService>();
 builder.Services.AddScoped<IEmployeeEventPublisher, AzureQueueEmployeeEventPublisher>();
+
+builder.Services.AddHttpClient<IProjectsApiClient, ProjectsApiClient>((serviceProvider, httpClient) =>
+{
+    var baseUrl = serviceProvider.GetRequiredService<IConfiguration>().GetValue<string>("ProjectsApi:BaseUrl")
+        ?? throw new InvalidOperationException("ProjectsApi:BaseUrl configuration is missing.");
+
+    httpClient.BaseAddress = new Uri(baseUrl);
+    httpClient.Timeout = TimeSpan.FromSeconds(10);
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

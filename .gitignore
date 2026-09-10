@@ -1,0 +1,58 @@
+# .NET build artifacts
+**/[Bb]in/
+**/[Oo]bj/
+**/[Dd]ebug/
+**/[Rr]elease/
+**/*.dll
+**/*.exe
+**/*.pdb
+**/*.cache
+**/*.deps.json
+**/*.runtimeconfig.json
+**/*.staticwebassets.*
+**/*.generated.*
+
+# Visual Studio / IDE local files
+.vs/
+**/.vs/
+.idea/
+**/.idea/
+.vscode/
+**/.vscode/
+**/*.user
+**/*.suo
+**/*.userosscache
+**/*.sln.docstates
+**/*.dbmdl
+**/*.jfm
+
+# Local secrets / environment files
+**/local.settings.json
+**/secrets.json
+**/*.Development.json
+
+# Test / results output
+**/TestResults/
+**/*.trx
+**/*.log
+
+# OS files
+**/.DS_Store
+**/Thumbs.db
+
+# NuGet package cache / publish output
+**/packages/
+**/publish/
+**/*.nupkg
+
+# Azure / worker generated files
+**/Properties/serviceDependencies*.json
+
+# Keep source files but ignore generated local state
+!**/*.cs
+!**/*.csproj
+!**/*.sln
+!**/*.json
+!**/*.md
+!**/*.http
+!**/*.config

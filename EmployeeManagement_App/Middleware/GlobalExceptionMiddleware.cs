@@ -26,6 +26,11 @@ public class GlobalExceptionMiddleware
             _logger.LogWarning("Employee {EmployeeId} was not found.", exception.EmployeeId);
             await WriteErrorResponseAsync(context, StatusCodes.Status404NotFound, "Employee not found.");
         }
+        catch (ProjectsApiUnavailableException exception)
+        {
+            _logger.LogError(exception, "The Projects API was unavailable while processing {RequestPath}.", context.Request.Path);
+            await WriteErrorResponseAsync(context, StatusCodes.Status503ServiceUnavailable, exception.Message);
+        }
         catch (ResourceNotFoundException exception)
         {
             _logger.LogWarning("{ResourceName} {ResourceId} was not found.", exception.ResourceName, exception.ResourceId);

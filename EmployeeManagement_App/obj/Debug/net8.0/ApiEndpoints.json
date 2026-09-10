@@ -176,6 +176,32 @@
   },
   {
     "ContainingType": "EmployeeManagementApp.Controllers.EmployeesController",
+    "Method": "GetProjectsByEmployeeId",
+    "RelativePath": "api/Employees/{employeeId}/projects",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "employeeId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "EmployeeManagementApp.Responses.ApiResponse\u00601[[System.Collections.Generic.IReadOnlyList\u00601[[EmployeeManagementApp.DTOs.ProjectResponseDto, EmployeeManagementApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "EmployeeManagementApp.Controllers.EmployeesController",
     "Method": "GetById",
     "RelativePath": "api/Employees/{id}",
     "HttpMethod": "GET",

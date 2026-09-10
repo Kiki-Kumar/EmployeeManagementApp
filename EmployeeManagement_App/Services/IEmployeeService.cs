@@ -8,6 +8,8 @@ public interface IEmployeeService
 
     Task<EmployeeResponseDto> GetByIdAsync(int id);
 
+    Task<IReadOnlyList<ProjectResponseDto>> GetProjectsAsync(int employeeId);
+
     Task<EmployeeResponseDto> CreateAsync(EmployeeCreateDto employeeCreateDto);
 
     Task<EmployeeResponseDto> UpdateAsync(int id, EmployeeUpdateDto employeeUpdateDto);

@@ -10,12 +10,18 @@ public class EmployeeService : IEmployeeService
     private readonly IEmployeeRepository _employeeRepository;
     private readonly ILogger<EmployeeService> _logger;
     private readonly IEmployeeEventPublisher _employeeEventPublisher;
+    private readonly IProjectsApiClient _projectsApiClient;
 
-    public EmployeeService(IEmployeeRepository employeeRepository, ILogger<EmployeeService> logger, IEmployeeEventPublisher employeeEventPublisher)
+    public EmployeeService(
+        IEmployeeRepository employeeRepository,
+        ILogger<EmployeeService> logger,
+        IEmployeeEventPublisher employeeEventPublisher,
+        IProjectsApiClient projectsApiClient)
     {
         _employeeRepository = employeeRepository;
         _logger = logger;
         _employeeEventPublisher = employeeEventPublisher;
+        _projectsApiClient = projectsApiClient;
     }
 
     public async Task<IReadOnlyList<EmployeeResponseDto>> GetAllAsync()
@@ -33,6 +39,14 @@ public class EmployeeService : IEmployeeService
         }
 
         return MapToResponseDto(employee);
+    }
+
+    public async Task<IReadOnlyList<ProjectResponseDto>> GetProjectsAsync(int employeeId)
+    {
+        await GetByIdAsync(employeeId);
+        var projects = await _projectsApiClient.GetProjectsByEmployeeIdAsync(employeeId);
+        _logger.LogInformation("Employee {EmployeeId} retrieved {ProjectCount} projects from the Projects API.", employeeId, projects.Count);
+        return projects;
     }
 
     public async Task<EmployeeResponseDto> CreateAsync(

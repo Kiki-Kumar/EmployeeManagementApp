@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\KirthikaKumar\\source\\repos\\Employee_Management_App\\EmployeeManagementApp\\EmployeeManagement.Contracts\\EmployeeManagement.Contracts.csproj",
+      "projectUniqueName": "D:\\Github\\CMP\\EmployeeManagementApp\\EmployeeManagement.Contracts\\EmployeeManagement.Contracts.csproj",
       "projectName": "EmployeeManagement.Contracts",
-      "projectPath": "C:\\Users\\KirthikaKumar\\source\\repos\\Employee_Management_App\\EmployeeManagementApp\\EmployeeManagement.Contracts\\EmployeeManagement.Contracts.csproj",
+      "projectPath": "D:\\Github\\CMP\\EmployeeManagementApp\\EmployeeManagement.Contracts\\EmployeeManagement.Contracts.csproj",
       "packagesPath": "C:\\Users\\KirthikaKumar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\KirthikaKumar\\source\\repos\\Employee_Management_App\\EmployeeManagementApp\\EmployeeManagement.Contracts\\obj\\",
+      "outputPath": "D:\\Github\\CMP\\EmployeeManagementApp\\EmployeeManagement.Contracts\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\KirthikaKumar\\source\\repos\\Employee_Management_App\\EmployeeManagementApp\\EmployeeManagement_App\\EmployeeManagementApp.csproj": {}
+    "D:\\Github\\CMP\\EmployeeManagementApp\\EmployeeManagement_App\\EmployeeManagementApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\KirthikaKumar\\source\\repos\\Employee_Management_App\\EmployeeManagementApp\\EmployeeManagement.Contracts\\EmployeeManagement.Contracts.csproj": {
+    "D:\\Github\\CMP\\EmployeeManagementApp\\EmployeeManagement.Contracts\\EmployeeManagement.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\KirthikaKumar\\source\\repos\\Employee_Management_App\\EmployeeManagementApp\\EmployeeManagement.Contracts\\EmployeeManagement.Contracts.csproj",
+        "projectUniqueName": "D:\\Github\\CMP\\EmployeeManagementApp\\EmployeeManagement.Contracts\\EmployeeManagement.Contracts.csproj",
         "projectName": "EmployeeManagement.Contracts",
-        "projectPath": "C:\\Users\\KirthikaKumar\\source\\repos\\Employee_Management_App\\EmployeeManagementApp\\EmployeeManagement.Contracts\\EmployeeManagement.Contracts.csproj",
+        "projectPath": "D:\\Github\\CMP\\EmployeeManagementApp\\EmployeeManagement.Contracts\\EmployeeManagement.Contracts.csproj",
         "packagesPath": "C:\\Users\\KirthikaKumar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\KirthikaKumar\\source\\repos\\Employee_Management_App\\EmployeeManagementApp\\EmployeeManagement.Contracts\\obj\\",
+        "outputPath": "D:\\Github\\CMP\\EmployeeManagementApp\\EmployeeManagement.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -70,14 +70,14 @@
         }
       }
     },
-    "C:\\Users\\KirthikaKumar\\source\\repos\\Employee_Management_App\\EmployeeManagementApp\\EmployeeManagement_App\\EmployeeManagementApp.csproj": {
+    "D:\\Github\\CMP\\EmployeeManagementApp\\EmployeeManagement_App\\EmployeeManagementApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\KirthikaKumar\\source\\repos\\Employee_Management_App\\EmployeeManagementApp\\EmployeeManagement_App\\EmployeeManagementApp.csproj",
+        "projectUniqueName": "D:\\Github\\CMP\\EmployeeManagementApp\\EmployeeManagement_App\\EmployeeManagementApp.csproj",
         "projectName": "EmployeeManagementApp",
-        "projectPath": "C:\\Users\\KirthikaKumar\\source\\repos\\Employee_Management_App\\EmployeeManagementApp\\EmployeeManagement_App\\EmployeeManagementApp.csproj",
+        "projectPath": "D:\\Github\\CMP\\EmployeeManagementApp\\EmployeeManagement_App\\EmployeeManagementApp.csproj",
         "packagesPath": "C:\\Users\\KirthikaKumar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\KirthikaKumar\\source\\repos\\Employee_Management_App\\EmployeeManagementApp\\EmployeeManagement_App\\obj\\",
+        "outputPath": "D:\\Github\\CMP\\EmployeeManagementApp\\EmployeeManagement_App\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -99,8 +99,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\KirthikaKumar\\source\\repos\\Employee_Management_App\\EmployeeManagementApp\\EmployeeManagement.Contracts\\EmployeeManagement.Contracts.csproj": {
-                "projectPath": "C:\\Users\\KirthikaKumar\\source\\repos\\Employee_Management_App\\EmployeeManagementApp\\EmployeeManagement.Contracts\\EmployeeManagement.Contracts.csproj"
+              "D:\\Github\\CMP\\EmployeeManagementApp\\EmployeeManagement.Contracts\\EmployeeManagement.Contracts.csproj": {
+                "projectPath": "D:\\Github\\CMP\\EmployeeManagementApp\\EmployeeManagement.Contracts\\EmployeeManagement.Contracts.csproj"
               }
             }
           }

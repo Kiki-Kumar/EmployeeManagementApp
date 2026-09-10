@@ -10,10 +10,12 @@ namespace EmployeeManagementApp.Controllers;
 public class EmployeesController : ControllerBase
 {
     private readonly IEmployeeService _employeeService;
+    private readonly IProjectsApiClient _projectsApiClient;
 
-    public EmployeesController(IEmployeeService employeeService)
+    public EmployeesController(IEmployeeService employeeService, IProjectsApiClient projectsApiClient)
     {
         _employeeService = employeeService;
+        _projectsApiClient = projectsApiClient;
     }
 
     [HttpGet]
@@ -29,6 +31,14 @@ public class EmployeesController : ControllerBase
     {
         var employee = await _employeeService.GetByIdAsync(id);
         return Ok(new ApiResponse<EmployeeResponseDto>(true, "Employee retrieved successfully.", employee));
+    }
+
+    [HttpGet("{employeeId:int}/projects")]
+    public async Task<ActionResult<ApiResponse<IReadOnlyList<ProjectResponseDto>>>> GetProjectsByEmployeeId(int employeeId)
+    {
+        await _employeeService.GetByIdAsync(employeeId);
+        var projects = await _projectsApiClient.GetProjectsByEmployeeIdAsync(employeeId);
+        return Ok(new ApiResponse<IReadOnlyList<ProjectResponseDto>>(true, "Employee projects retrieved successfully.", projects));
     }
 
     [HttpPost]
