@@ -33,6 +33,29 @@ public class EmployeesController : ControllerBase
         return Ok(new ApiResponse<EmployeeResponseDto>(true, "Employee retrieved successfully.", employee));
     }
 
+    [HttpGet("{id:int}/links")]
+    public async Task<ActionResult<ApiResponse<EmployeeLinksResponseDto>>> GetLinks(int id)
+    {
+        await _employeeService.GetByIdAsync(id);
+
+        var employeeUrl = Url.ActionLink(nameof(GetById), values: new { id });
+        var projectsUrl = Url.ActionLink(nameof(GetProjectsByEmployeeId), values: new { employeeId = id });
+
+        if (employeeUrl is null || projectsUrl is null)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+
+        var links = new EmployeeLinksResponseDto
+        {
+            EmployeeId = id,
+            EmployeeUrl = employeeUrl,
+            ProjectsUrl = projectsUrl
+        };
+
+        return Ok(new ApiResponse<EmployeeLinksResponseDto>(true, "Employee links retrieved successfully.", links));
+    }
+
     [HttpGet("{employeeId:int}/projects")]
     public async Task<ActionResult<ApiResponse<IReadOnlyList<ProjectResponseDto>>>> GetProjectsByEmployeeId(int employeeId)
     {

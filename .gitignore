@@ -3,14 +3,8 @@
 **/[Oo]bj/
 **/[Dd]ebug/
 **/[Rr]elease/
-**/*.dll
-**/*.exe
-**/*.pdb
-**/*.cache
-**/*.deps.json
-**/*.runtimeconfig.json
-**/*.staticwebassets.*
-**/*.generated.*
+**/artifacts/
+**/publish/
 
 # Visual Studio / IDE local files
 .vs/
@@ -19,40 +13,41 @@
 **/.idea/
 .vscode/
 **/.vscode/
-**/*.user
-**/*.suo
-**/*.userosscache
-**/*.sln.docstates
-**/*.dbmdl
-**/*.jfm
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.dbmdl
+*.jfm
 
-# Local secrets / environment files
+# Local secrets and machine-specific configuration
 **/local.settings.json
 **/secrets.json
-**/*.Development.json
+*.pfx
+*.publishsettings
+*.pubxml
 
-# Test / results output
+# Generated service/deployment state
+**/Properties/serviceDependencies*.json
 **/TestResults/
-**/*.trx
-**/*.log
+*.trx
+*.log
+*.nupkg
+*.snupkg
 
 # OS files
-**/.DS_Store
-**/Thumbs.db
+.DS_Store
+Thumbs.db
 
-# NuGet package cache / publish output
+# NuGet/package caches
 **/packages/
-**/publish/
-**/*.nupkg
 
-# Azure / worker generated files
-**/Properties/serviceDependencies*.json
-
-# Keep source files but ignore generated local state
-!**/*.cs
-!**/*.csproj
-!**/*.sln
-!**/*.json
-!**/*.md
-!**/*.http
-!**/*.config
+# Generated compiler/publish files outside bin/obj
+*.dll
+*.exe
+*.pdb
+*.cache
+*.deps.json
+*.runtimeconfig.json
+*.staticwebassets.*
+*.generated.*

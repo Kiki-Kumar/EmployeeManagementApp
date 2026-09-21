@@ -1,0 +1,336 @@
+{
+  "info": {
+    "_postman_id": "8ca4940e-0498-45eb-a048-5dc7dd6924bb",
+    "name": "Employee Management App API Tests",
+    "description": "Ordered integration tests for EmployeeManagementApp. Run the full collection so generated IDs flow through dependent requests.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://localhost:44320" },
+    { "key": "runId", "value": "" },
+    { "key": "departmentName", "value": "" },
+    { "key": "jobTitleName", "value": "" },
+    { "key": "departmentId", "value": "" },
+    { "key": "jobTitleId", "value": "" },
+    { "key": "employeeId", "value": "" },
+    { "key": "leaveRequestId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "01 - Reference Data Setup",
+      "item": [
+        {
+          "name": "Create Department",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const runId = Date.now().toString();",
+                  "pm.collectionVariables.set('runId', runId);",
+                  "pm.collectionVariables.set('departmentName', `Postman Department ${runId}`);",
+                  "pm.collectionVariables.set('jobTitleName', `Postman Job ${runId}`);"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 201', () => pm.response.to.have.status(201));",
+                  "const body = pm.response.json();",
+                  "pm.test('Department response is valid', () => { pm.expect(body.success).to.eql(true); pm.expect(body.data.name).to.eql(pm.collectionVariables.get('departmentName')); });",
+                  "pm.collectionVariables.set('departmentId', body.data.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"{{departmentName}}\",\n  \"description\": \"Created by the Postman integration suite\"\n}" },
+            "url": "{{baseUrl}}/api/Departments"
+          }
+        },
+        {
+          "name": "Get Department By ID",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+            "const body = pm.response.json();",
+            "pm.test('Returns created department', () => { pm.expect(body.success).to.eql(true); pm.expect(body.data.id).to.eql(Number(pm.collectionVariables.get('departmentId'))); });"
+          ] } }],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/Departments/{{departmentId}}" }
+        },
+        {
+          "name": "Expect 409 - Duplicate Department",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 409', () => pm.response.to.have.status(409));",
+            "const body = pm.response.json();",
+            "pm.test('Conflict envelope is valid', () => { pm.expect(body.success).to.eql(false); pm.expect(body.message).to.include('already exists'); });"
+          ] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"{{departmentName}}\",\n  \"description\": \"Duplicate\"\n}" },
+            "url": "{{baseUrl}}/api/Departments"
+          }
+        },
+        {
+          "name": "Create Job Title",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 201', () => pm.response.to.have.status(201));",
+            "const body = pm.response.json();",
+            "pm.test('Job title response is valid', () => { pm.expect(body.success).to.eql(true); pm.expect(body.data.name).to.eql(pm.collectionVariables.get('jobTitleName')); });",
+            "pm.collectionVariables.set('jobTitleId', body.data.id);"
+          ] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"{{jobTitleName}}\",\n  \"description\": \"Created by the Postman integration suite\"\n}" },
+            "url": "{{baseUrl}}/api/JobTitles"
+          }
+        },
+        {
+          "name": "Get All Job Titles",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+            "const body = pm.response.json();",
+            "pm.test('Created job title is present', () => pm.expect(body.data.some(x => x.id === Number(pm.collectionVariables.get('jobTitleId')))).to.eql(true));"
+          ] } }],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/JobTitles" }
+        }
+      ]
+    },
+    {
+      "name": "02 - Employees",
+      "item": [
+        {
+          "name": "Expect 400 - Invalid Employee DTO",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 400', () => pm.response.to.have.status(400));",
+            "const body = pm.response.json();",
+            "pm.test('Validation envelope contains errors', () => { pm.expect(body.success).to.eql(false); pm.expect(body.message).to.eql('Validation failed.'); pm.expect(body.data).to.be.an('object'); });"
+          ] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"\",\n  \"lastName\": \"Postman\",\n  \"email\": \"not-an-email\",\n  \"departmentId\": {{departmentId}},\n  \"jobTitleId\": {{jobTitleId}},\n  \"salary\": 0,\n  \"dateOfJoining\": \"2026-09-17\",\n  \"isActive\": true\n}" },
+            "url": "{{baseUrl}}/api/Employees"
+          }
+        },
+        {
+          "name": "Create Employee",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 201', () => pm.response.to.have.status(201));",
+            "const body = pm.response.json();",
+            "pm.test('Employee references are expanded', () => { pm.expect(body.success).to.eql(true); pm.expect(body.data.departmentId).to.eql(Number(pm.collectionVariables.get('departmentId'))); pm.expect(body.data.jobTitleId).to.eql(Number(pm.collectionVariables.get('jobTitleId'))); pm.expect(body.data.departmentName).to.eql(pm.collectionVariables.get('departmentName')); });",
+            "pm.collectionVariables.set('employeeId', body.data.id);"
+          ] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Postman\",\n  \"lastName\": \"Employee\",\n  \"email\": \"postman.{{runId}}@example.com\",\n  \"departmentId\": {{departmentId}},\n  \"jobTitleId\": {{jobTitleId}},\n  \"salary\": 65000.00,\n  \"dateOfJoining\": \"2026-09-17\",\n  \"isActive\": true\n}" },
+            "url": "{{baseUrl}}/api/Employees"
+          }
+        },
+        {
+          "name": "Get All Employees",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+            "const body = pm.response.json();",
+            "pm.test('Created employee is present', () => pm.expect(body.data.some(x => x.id === Number(pm.collectionVariables.get('employeeId')))).to.eql(true));"
+          ] } }],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/Employees" }
+        },
+        {
+          "name": "Get Employee By ID",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+            "const body = pm.response.json();",
+            "pm.test('Correct employee is returned', () => { pm.expect(body.data.id).to.eql(Number(pm.collectionVariables.get('employeeId'))); pm.expect(body.data.email).to.eql(`postman.${pm.collectionVariables.get('runId')}@example.com`); });"
+          ] } }],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/Employees/{{employeeId}}" }
+        },
+        {
+          "name": "Get Employee API Links",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+            "const body = pm.response.json();",
+            "pm.test('Links are absolute and employee-specific', () => { const id = pm.collectionVariables.get('employeeId'); pm.expect(body.data.employeeUrl).to.match(/^https?:\\/\\//); pm.expect(body.data.employeeUrl).to.include(`/api/Employees/${id}`); pm.expect(body.data.projectsUrl).to.include(`/api/Employees/${id}/projects`); });"
+          ] } }],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/Employees/{{employeeId}}/links" }
+        },
+        {
+          "name": "Get Employee Projects Through Projects API",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+            "const body = pm.response.json();",
+            "pm.test('Projects composition response is valid', () => { pm.expect(body.success).to.eql(true); pm.expect(body.data).to.be.an('array'); });"
+          ] } }],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/Employees/{{employeeId}}/projects" }
+        },
+        {
+          "name": "Update Employee",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+            "const body = pm.response.json();",
+            "pm.test('Employee was updated', () => { pm.expect(body.data.firstName).to.eql('Updated'); pm.expect(body.data.salary).to.eql(70000); });"
+          ] } }],
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Updated\",\n  \"lastName\": \"Employee\",\n  \"email\": \"postman.{{runId}}@example.com\",\n  \"departmentId\": {{departmentId}},\n  \"jobTitleId\": {{jobTitleId}},\n  \"salary\": 70000.00,\n  \"dateOfJoining\": \"2026-09-17\",\n  \"isActive\": true\n}" },
+            "url": "{{baseUrl}}/api/Employees/{{employeeId}}"
+          }
+        },
+        {
+          "name": "Expect 409 - Department Delete While Assigned",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 409', () => pm.response.to.have.status(409));",
+            "pm.test('Conflict explains assignment', () => pm.expect(pm.response.json().message).to.include('assigned employees'));"
+          ] } }],
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/api/Departments/{{departmentId}}" }
+        },
+        {
+          "name": "Expect 409 - Job Title Delete While Assigned",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 409', () => pm.response.to.have.status(409));",
+            "pm.test('Conflict explains assignment', () => pm.expect(pm.response.json().message).to.include('assigned employees'));"
+          ] } }],
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/api/JobTitles/{{jobTitleId}}" }
+        }
+      ]
+    },
+    {
+      "name": "03 - Leave Requests",
+      "item": [
+        {
+          "name": "Expect 400 - Invalid Leave Date Range",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 400', () => pm.response.to.have.status(400));",
+            "pm.test('Date error is clear', () => pm.expect(pm.response.json().message).to.include('End date'));"
+          ] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"employeeId\": {{employeeId}},\n  \"startDate\": \"2026-10-10\",\n  \"endDate\": \"2026-10-01\",\n  \"reason\": \"Invalid range test\"\n}" },
+            "url": "{{baseUrl}}/api/LeaveRequests"
+          }
+        },
+        {
+          "name": "Create Leave Request",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 201', () => pm.response.to.have.status(201));",
+            "const body = pm.response.json();",
+            "pm.test('Leave request belongs to employee', () => { pm.expect(body.success).to.eql(true); pm.expect(body.data.employeeId).to.eql(Number(pm.collectionVariables.get('employeeId'))); });",
+            "pm.collectionVariables.set('leaveRequestId', body.data.id);"
+          ] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"employeeId\": {{employeeId}},\n  \"startDate\": \"2026-10-01\",\n  \"endDate\": \"2026-10-03\",\n  \"reason\": \"Postman integration test\"\n}" },
+            "url": "{{baseUrl}}/api/LeaveRequests"
+          }
+        },
+        {
+          "name": "Get Leave Request By ID",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+            "const body = pm.response.json();",
+            "pm.test('Correct leave request is returned', () => pm.expect(body.data.id).to.eql(Number(pm.collectionVariables.get('leaveRequestId'))));"
+          ] } }],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/LeaveRequests/{{leaveRequestId}}" }
+        },
+        {
+          "name": "Get All Leave Requests",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+            "const body = pm.response.json();",
+            "pm.test('Created leave request is present', () => pm.expect(body.data.some(x => x.id === Number(pm.collectionVariables.get('leaveRequestId')))).to.eql(true));"
+          ] } }],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/LeaveRequests" }
+        },
+        {
+          "name": "Approve Leave Request",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+            "const body = pm.response.json();",
+            "pm.test('Leave request is approved', () => pm.expect(body.data.status).to.eql(1));"
+          ] } }],
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"employeeId\": {{employeeId}},\n  \"startDate\": \"2026-10-01\",\n  \"endDate\": \"2026-10-03\",\n  \"reason\": \"Approved Postman integration test\",\n  \"status\": 1\n}" },
+            "url": "{{baseUrl}}/api/LeaveRequests/{{leaveRequestId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 - Not Found Responses",
+      "item": [
+        {
+          "name": "Expect 404 - Employee Not Found",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 404', () => pm.response.to.have.status(404));",
+            "const body = pm.response.json();",
+            "pm.test('Error envelope is safe', () => { pm.expect(body.success).to.eql(false); pm.expect(body.message).to.eql('Employee not found.'); pm.expect(body.data).to.eql(null); });"
+          ] } }],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/Employees/2147483647" }
+        },
+        {
+          "name": "Expect 404 - Department Not Found",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 404', () => pm.response.to.have.status(404));",
+            "pm.test('Resource is identified', () => pm.expect(pm.response.json().message).to.include('Department'));"
+          ] } }],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/Departments/2147483647" }
+        }
+      ]
+    },
+    {
+      "name": "05 - Cleanup",
+      "item": [
+        {
+          "name": "Delete Leave Request",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+            "pm.test('Delete envelope has null data', () => { const body = pm.response.json(); pm.expect(body.success).to.eql(true); pm.expect(body.data).to.eql(null); });"
+          ] } }],
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/api/LeaveRequests/{{leaveRequestId}}" }
+        },
+        {
+          "name": "Delete Employee",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+            "pm.test('Employee deletion succeeded', () => pm.expect(pm.response.json().success).to.eql(true));"
+          ] } }],
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/api/Employees/{{employeeId}}" }
+        },
+        {
+          "name": "Confirm Employee Deleted",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 404', () => pm.response.to.have.status(404));"
+          ] } }],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/Employees/{{employeeId}}" }
+        },
+        {
+          "name": "Delete Department",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));"
+          ] } }],
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/api/Departments/{{departmentId}}" }
+        },
+        {
+          "name": "Delete Job Title",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": [
+            "pm.test('Status is 200', () => pm.response.to.have.status(200));"
+          ] } }],
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/api/JobTitles/{{jobTitleId}}" }
+        }
+      ]
+    }
+  ]
+}

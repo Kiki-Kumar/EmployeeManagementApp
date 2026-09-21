@@ -22,7 +22,8 @@ public class ProjectsApiClient : IProjectsApiClient
         {
             _logger.LogInformation("Requesting projects for employee {EmployeeId} from {ProjectsApiUrl}.", employeeId, _httpClient.BaseAddress);
 
-            var response = await _httpClient.GetAsync($"api/projects/employee/{employeeId}", cancellationToken);
+            var requestUri = new Uri($"api/projects/employee/{employeeId}", UriKind.Relative);
+            var response = await _httpClient.GetAsync(requestUri, cancellationToken);
 
             if (!response.IsSuccessStatusCode)
             {
